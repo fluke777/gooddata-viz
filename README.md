@@ -45,10 +45,39 @@ This works similarly but there are couple of differences. You do not need to be 
 You can obtain the file using GoodDat SDK see [Get the model](https://github.com/gooddata/gooddata-ruby-examples/blob/master/12_working_with_blueprints/02_getting_project_blueprint.asciidoc)
 
 
-### Parameters
+## Display conventions
+There are couple of visual hints that should make it easier to see important things.
+
+### Date dimensions
+Date dimensions are filled with light blue color
+
+### Fact tables
+Fact table is filled with light yellow(ish) color. Fact table is defined as a dataset that is not referenced by another dataset. It does not mean that is has to include exclusively facts.
+
+### References
+References are by default leading out of references in case you are rendering with `dot` engine (hierarchichal layout). If you are using any other engine the references are connected to the dataset itself. The arrow is from reference to the referenced dataset (from fact table to its dimension).
+
+### Fact
+Fact is marked with `#` in dataset
+
+### Attribute
+Attribute is marked with `a` in dataset
+
+### Anchor/Connection point
+Anchor is marked with `*` in dataset
+
+## Parameters
 
 There are several parameters to influence the functioning of the visualizer.
 
+#### base_name
+base_name is the file under which the images (and dotfile) will be generated. If you pass `filename` following files will be generated `filename.svg`, `filename.dot` and `filename.png`.
+
+#### engine
+engine parameter is deciding which layouting engine of graphviz the tool uses. This is a subject to change.
+
+#### include_dates
+Sometimes the model is so big that you might want to stop displaying pieces of model. This will remove date dimensions and references to them.
 
 ## Development
 

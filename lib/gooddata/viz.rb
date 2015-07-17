@@ -60,8 +60,7 @@ module Gooddata
 
       base_name = opts[:base_name] || 'model'
       engine = opts[:engine] || 'neato'
-      # Create a new graph
-      include_dates = true
+      include_dates = opts[:include_dates] == false ? false : true
 
       g = GraphViz.new(:G, type: :digraph, rankdir: 'LR', overlap: 'false', splines: true, :use => engine)
       blueprint.datasets(:all, dd: include_dates).each do |d|
