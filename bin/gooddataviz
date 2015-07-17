@@ -1,0 +1,63 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require 'gooddata/viz'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  main do
+    # your program code here
+    # You can access CLI options via
+    # the options Hash
+    if options[:f]
+      require 'gooddata'
+      blueprint = GoodData::Model::ProjectBlueprint.from_json(options[:f])
+      Gooddata::Viz.render_blueprint(blueprint, opts = {})
+    elsif options[:p]
+      require 'gooddata'
+      GoodData.logging_http_on if options[:l]
+      params = {
+        login: options[:U],
+        password: options[:P],
+        server: options[:s]
+      }.compact
+      client = params.empty? ? GoodData.connect : GoodData.connect(params)
+      project = client.projects(options[:p])
+      blueprint = project.blueprint
+      Gooddata::Viz.render_blueprint(blueprint, opts = {})
+    end
+  end
+
+  # supplemental methods here
+
+  # Declare command-line interface here
+
+  # description "one line description of your app"
+  #
+  # Accept flags via:
+  on("-p pid","project id")
+  on("-U username","gooddata username")
+  on("-P password","gooddata password")
+  on("-f file","blueprint file")
+
+  # options[flag] will contain VAL
+  #
+  # Specify switches via:
+  # on("--[no-]switch","Some switch")
+  #
+  # Or, just call OptionParser methods on opts
+  #
+  # Require an argument
+  # arg :some_arg 
+  #
+  # # Make an argument optional
+  # arg :optional_arg, :optional
+
+  # version <%= module_name %>::VERSION
+  # use_log_level_option :toggle_debug_on_signal => 'USR1'
+
+  go!
+end
