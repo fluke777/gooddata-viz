@@ -30,7 +30,7 @@ You can invoke it like this
 
     $ gooddataviz -p tywaryfht8k81ferrsqpuf3mcuqg9qgc -U john@gmail.com -P password
 
-This will by default produce 3 files called `model.png`, `model.dot` and `model.svg`. If you have your credentials stored in ~/.gooddata (see (storing credentials locally)[https://github.com/gooddata/gooddata-ruby-examples/blob/master/01_getting_started/03_connecting_to_gooddata.asciidoc#discussion]) you can omit the credentials an just provide the pid
+This will by default produce 3 files called `model.png`, `model.dot` and `model.svg`. If you have your credentials stored in ~/.gooddata (see [storing credentials locally](https://github.com/gooddata/gooddata-ruby-examples/blob/master/01_getting_started/03_connecting_to_gooddata.asciidoc#discussion)) you can omit the credentials an just provide the pid
 
     $ gooddataviz -p tywaryfht8k81ferrsqpuf3mcuqg9qgc
 
@@ -42,7 +42,7 @@ This works similarly but there are couple of differences. You do not need to be 
     $ gooddataviz -f path_to_file.json
 
 #### Obtaining the model
-You can obtain the file using GoodDat SDK see (Get the model)[https://github.com/gooddata/gooddata-ruby-examples/blob/master/12_working_with_blueprints/02_getting_project_blueprint.asciidoc]
+You can obtain the file using GoodDat SDK see [Get the model](https://github.com/gooddata/gooddata-ruby-examples/blob/master/12_working_with_blueprints/02_getting_project_blueprint.asciidoc)
 
 
 ### Parameters
